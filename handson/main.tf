@@ -32,6 +32,8 @@ module "fgt" {
   az            = local.az
   subnet_cidrs  = var.subnet_cidrs
   fgt_user_data = data.cloudinit_config.fgt.rendered
+  vpc_id        = module.net.vpc.id
+  subnet_ids    = module.net.subnet_ids
 }
 
 // add your bootstrap data here 

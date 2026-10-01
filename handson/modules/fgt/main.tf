@@ -19,7 +19,7 @@ resource "aws_network_interface" "fgt_ports" {
   for_each = toset(local.subnets)
 
   description       = "fgt-port${index(local.subnets, each.key) + 1}"
-  subnet_id         = module.net.subnet_ids[each.key]
+  subnet_id         = var.subnet_ids[each.key]
   source_dest_check = false
 }
 
@@ -79,7 +79,7 @@ data "aws_ami" "fgt_latest" {
 resource "aws_security_group" "allow_all" {
   name        = "Allow All"
   description = "Allow all traffic"
-  vpc_id      = module.net.vpc.id
+  vpc_id      = var.vpc_id
 
   ingress {
     from_port   = 0

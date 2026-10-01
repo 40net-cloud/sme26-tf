@@ -12,3 +12,13 @@ variable "fgt_user_data" {
   type        = string
   description = "Inline or MIME-multipart user data block for FortiGate"
 }
+
+variable "vpc_id" {
+  type        = string
+  description = "ID of the VPC to use for FortiGate deployment"
+}
+
+variable "subnet_ids" {
+  type        = map(string)
+  description = "Map of subnet name to its id"
+}
